@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       # See CUSTOMIZE.md for details on how to set up PAT for triggering subsequent workflows
               with:
-                token: ${{ gilia }}
+                token: ${{ gilia.PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
