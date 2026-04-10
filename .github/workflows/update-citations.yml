@@ -12,12 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        # See CUSTOMIZE.md for details on how to set up PAT for triggering subsequent workflows
-        # added github token below
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }} # added token for triggering subsequent workflows
 
       - name: Set up Python
         uses: actions/setup-python@v4
