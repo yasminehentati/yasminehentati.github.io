@@ -15,7 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.PAT }} # added token for triggering subsequent workflows
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -88,6 +89,8 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          git config --local credential.helper store
+          echo "https://${{ secrets.PAT }}:x-oauth-basic@github.com" > ~/.git-credentials
           echo "🔧 Git configured."
 
       - name: Commit and push if changed
@@ -96,5 +99,5 @@ jobs:
           git diff --staged --quiet || (
             echo "📤 Committing and pushing changes..."
             git commit -m "Update Google Scholar citations"
-            git push
+            git push origin main
           )
