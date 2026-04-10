@@ -15,7 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          repository: yasminehentati/yasminehentati
           token: ${{ secrets.PAT }}
 
       - name: Set up Python
